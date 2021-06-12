@@ -1,6 +1,8 @@
 document.addEventListener('DOMContentLoaded', ()=>{
     const squares = document.querySelectorAll('.grid div');
     const resultDisplay = document.querySelector('#result');
+    const bgAudio = document.querySelector(".bg-audio");
+    const shootSnd = document.querySelector(".shoot-sound");
     let width = 15;
     let currentShooterIndex = 202;
     let currentInvaderIndex = 0;
@@ -21,6 +23,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     function moveShooter(e) {
         squares[currentShooterIndex].classList.remove('shooter');
+        shootSnd.play();    
         switch(e.keyCode) {
             case 37:
                 if(currentShooterIndex % width !== 0) currentShooterIndex -= 1;
@@ -34,6 +37,9 @@ document.addEventListener('DOMContentLoaded', ()=>{
     document.addEventListener('keydown', moveShooter);
 
     function moveInvaders() {
+        bgAudio.play();
+        bgAudio.volume = .3;
+        bgAudio.loop = true;
         const leftEdge = alienInvaders[0] % width === 0;
         const rightEdge = alienInvaders[alienInvaders.length - 1] % width === width - 1;
 
@@ -77,8 +83,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 
     function shoot(e){
         let laserId;
-        let currentLaserIndex = currentShooterIndex;
-
+        let currentLaserIndex = currentShooterIndex; 
         function moveLaser() {
             squares[currentLaserIndex].classList.remove('laser');
             currentLaserIndex -= width;
@@ -101,7 +106,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 setTimeout(() => squares[currentLaserIndex].classList.remove('laser'), 100)
             }
         }
-        
+     
         switch(e.keyCode){
             case 32:
                 laserId = setInterval(moveLaser, 100);
