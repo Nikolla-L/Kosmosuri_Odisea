@@ -1,24 +1,41 @@
+body {
+    display:grid;
+    place-items: center;
+    min-height:100vh;
+    background: url(images/space.jpg);
+}
 .grid{
     display: flex;
     flex-wrap: wrap;
     border:solid 1px;
-    width:300px;
-    height:300px;
+    width:500px;
+    height:500px;
 }
 .grid div{
-    width:20px;
-    height:20px;
+    width:33px;
+    height:33px;
 }
 .shooter{
-    background-color: blue;
+    background-image: url(images/dick-ship.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 50px;  
+    height:50px!important; 
 }
 .invader{
-    background-color: purple;
-    border-radius:10px;
+    border-radius:15px;
+    background-image: url(images/female_egg.jpg);
+    background-size: 50px;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 .boom{
     background-color: red;
 }
 .laser{
-    background-color: orange;
+    box-shadow:inset 0 0 1em 0 rgb(219, 188, 13), 0 0 0.5em 0 white;
+    background-size: 30px;      
+    background-image: url(images/sperm.png);
+    background-repeat: no-repeat;
+    background-position: center;
 }
